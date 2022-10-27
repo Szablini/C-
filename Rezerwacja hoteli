@@ -1,0 +1,93 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+class goscHotelu
+{
+    public:
+    string imie, nazwisko, miasto;
+    int wiek, czas;
+    int a = 0;
+    void zapiszGoscia();
+    void sprawdzWiek();
+    void pokazGoscia();
+    void obliczCene();
+    void przydzielPokoj();
+};
+
+void goscHotelu::zapiszGoscia()
+{
+    cout << "Wprowadz imie: ";
+    cin >> imie;
+    cout << "Wprowadz nazwisko: ";
+    cin >> nazwisko;
+    cout << "Wprowadz wiek: ";
+    cin >> wiek;
+    cout << "Wprowadz miasto: ";
+    cin >> miasto;
+    cout << "Wprowadz czas pobytu w dniach: ";
+    cin >> czas;
+
+    this->imie=imie;
+    this->nazwisko=nazwisko;
+    this->wiek=wiek;
+    this->miasto=miasto;
+    this->czas=czas;
+    this->a=a;
+}
+
+void goscHotelu::sprawdzWiek()
+{
+    if (wiek<18)
+    {
+        cout << "Nie mozemy wynajac pokoju osobie niepelnoletniej." << endl;
+    }
+}
+
+void goscHotelu::pokazGoscia()
+{
+    if (wiek>18)
+    {
+    cout << "--- POTWIERDZENIE REZERWACJI ---" << endl;
+    cout << imie << " " << nazwisko << endl;
+    cout << "Miejsce zamieszkania goscia: " << miasto << endl;
+    cout << "Dlugosc pobytu w dniach: " << czas << endl;
+    }
+}
+void goscHotelu::obliczCene()
+{
+
+    if (wiek>18)
+    {
+    int cena;
+    if (czas!=0)
+    {
+    cena = czas*140;
+    cout << "Koszt pobytu to " << cena << endl;
+    }
+    }
+}
+
+void goscHotelu::przydzielPokoj()
+{
+    if (wiek>18)
+    {
+    if (czas!=0)
+    {
+        srand(time(NULL));
+        int nrpokoju = rand()%101;;
+        cout << "Masz numer pokoju: " << nrpokoju << endl;
+    }
+    }
+}
+int main()
+{
+    goscHotelu gosc1;
+    gosc1.zapiszGoscia();
+    gosc1.sprawdzWiek();
+    gosc1.pokazGoscia();
+    gosc1.obliczCene();
+    gosc1.przydzielPokoj();
+    return 0;
+}
